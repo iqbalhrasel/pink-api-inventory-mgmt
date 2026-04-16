@@ -25,21 +25,20 @@ public class ProductController {
     }
 
     @PostMapping("/by-user")
-    public ResponseEntity<?> addProductMovement(@RequestBody @Valid AddProductRequest request){
-
-        productService.addProductMovement(request);
+    public ResponseEntity<?> addProduct(@RequestBody @Valid AddProductRequest request){
+        productService.addProduct(request);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping("/by-user")
-    public List<ApprovableProductWithLog> getApprovableProductMovements(){
+    public List<ApprovableProductWithLog> getApprovableProducts(){
         return productService.getApprovableProducts();
     }
 
     @PutMapping("/by-user/{productId}")
-    public ResponseEntity<?> modifyProductMovements(@PathVariable(name = "productId") Integer productId,
+    public ResponseEntity<?> modifyProductStocks(@PathVariable(name = "productId") Integer productId,
                                                     @RequestBody ModifyStockLogRequest request){
-        productService.modifyProductMovements(productId, request);
+        productService.modifyProductStocks(productId, request);
         return ResponseEntity.ok().build();
     }
 
@@ -67,7 +66,6 @@ public class ProductController {
     @PutMapping("/by-admin")
     public ResponseEntity<?> updateProductPrice(@RequestBody @Valid ProductWithPriceRequest request){
         productService.updateProductPrice(request);
-
         return ResponseEntity.ok().build();
     }
 }

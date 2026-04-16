@@ -29,7 +29,7 @@ public class ProductService {
     private final StockLogRepository stockLogRepository;
     private final ProductMapper productMapper;
 
-    public void addProductMovement(@Valid AddProductRequest request) {
+    public void addProduct(@Valid AddProductRequest request) {
         var category = categoryRepository
                 .findById(request.getCategoryId())
                 .orElseThrow(CategoryNotFoundException::new);
@@ -239,7 +239,7 @@ public class ProductService {
                 .toList();
     }
 
-    public void modifyProductMovements(Integer productId, ModifyStockLogRequest request) {
+    public void modifyProductStocks(Integer productId, ModifyStockLogRequest request) {
         if(!productRepository.existsById(productId))
             throw new ProductNotFoundException();
 
